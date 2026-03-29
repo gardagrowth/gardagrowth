@@ -722,9 +722,106 @@
     transform: none;
   }
 
+  /* ── LEAD MAGNET ── */
+  #leadmagnet {
+    background: var(--bg2);
+  }
+
+  .lm-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .lm-text h2 { margin-bottom: 16px; }
+
+  .lm-text p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .lm-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lm-bullet {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .lm-bullet::before {
+    content: '✓';
+    width: 20px; height: 20px;
+    min-width: 20px;
+    background: rgba(240,192,64,0.12);
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lm-form-wrap {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .lm-form-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .lm-form-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .lm-form-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .lm-form-wrap iframe {
+    border-radius: 8px;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Override Brevo iframe styles for dark theme compatibility */
+  .brevo-wrap {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 860px) {
-    .hero-grid, .solucion-inner, .sobre-inner {
+    .hero-grid, .solucion-inner, .sobre-inner, .lm-inner {
       grid-template-columns: 1fr;
       gap: 40px;
     }
@@ -744,6 +841,32 @@
       gap: 12px;
       text-align: center;
     }
+
+    section { padding: 70px 5vw; }
+
+    .hero h1 { font-size: 2.2rem; }
+
+    .plan-card { padding: 28px 20px; }
+
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+
+    .btn-primary { width: 100%; justify-content: center; }
+
+    nav { padding: 16px 5vw; }
+
+    .nav-cta { font-size: 0.78rem; padding: 8px 16px; }
+
+    #cta { padding: 80px 5vw; }
+
+    .cta-actions { padding: 0 10px; }
+
+    .lm-form-wrap { padding: 24px 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .sobre-values { grid-template-columns: 1fr; }
+    .hero-stat-row { flex-direction: column; gap: 12px; }
+    .planes-grid { gap: 16px; }
   }
 </style>
 </head>
@@ -997,6 +1120,37 @@
 
 <div class="divider"></div>
 
+<!-- LEAD MAGNET -->
+<section id="leadmagnet">
+  <div class="container">
+    <div class="lm-inner">
+      <div class="lm-text fade-up">
+        <div class="section-eyebrow">Guía gratuita</div>
+        <h2 class="section-title">Descubre qué está fallando en tu restaurante</h2>
+        <p>Descarga gratis nuestra guía con los 5 errores de Google Maps que hacen perder clientes a los restaurantes en Tenerife cada día. Sin spam, solo valor.</p>
+        <div class="lm-bullets">
+          <div class="lm-bullet">Por qué tu restaurante no aparece en las búsquedas</div>
+          <div class="lm-bullet">Cómo gestionar reseñas negativas sin perder clientes</div>
+          <div class="lm-bullet">El sistema para conseguir más reseñas positivas</div>
+          <div class="lm-bullet">Qué fotos necesitas y cuándo actualizarlas</div>
+          <div class="lm-bullet">La solución concreta para cada error</div>
+        </div>
+      </div>
+
+      <div class="lm-form-wrap fade-up" style="transition-delay:.2s">
+        <span class="lm-form-label">Descarga gratuita</span>
+        <div class="lm-form-title">Los 5 errores de Google Maps que cuestan clientes</div>
+        <div class="lm-form-sub">Te lo mandamos al email en menos de 1 minuto.</div>
+        <div class="brevo-wrap">
+          <iframe width="540" height="305" src="https://297941e6.sibforms.com/serve/MUIFAl3Es7-PkvyJwLwoedjSgD7MeA_4ayYVcsBjORMM6PPsLdGean7ugFAcO1INtpvVxBddOgldHq1TGb5UNMN9gL043N9ZNfRLu1nuozR20e07qMkVC_pnQGMwOY9Qyc6AeNNowQe-jXMSwjEmEHioWKtWtS-ioG4qac_gbTIHxbztZl65E2lhp0oH7b40nwSlX2k5RPs1_nxAjg==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%;width:100%;border-radius:8px;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- CTA FINAL -->
 <section id="cta">
   <div class="container">
@@ -1008,7 +1162,7 @@
         Escríbenos por WhatsApp →
       </a>
       <div class="cta-contact">
-        <a href="mailto:gardagrowth@gmail.com">gardagrowth@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#70171102141117021f07041830171d11191c5e131f1d"><span class="__cf_email__" data-cfemail="75121407111412071a02011d351218141c195b161a18">[email&#160;protected]</span></a>
         &nbsp;·&nbsp;
         <a href="tel:+34670100504">670 10 05 04</a>
       </div>
@@ -1022,7 +1176,7 @@
   <div class="footer-copy">© 2025 Garda Growth · Tenerife, Canarias</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1033,13 +1187,4 @@
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Nav scroll effect
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.padding =
-      window.scrollY > 60 ? '14px 6vw' : '20px 6vw';
-  });
-</script>
-</body>
-</html>
+  document.querySelectorAll('.fad
