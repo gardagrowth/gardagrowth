@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garda Growth — Marketing digital para negocios</title>
+<meta name="description" content="Ayudamos a restaurantes a conseguir más clientes a través de Google Maps, redes sociales y contenido estratégico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080808;
+  --bg2: #0f0f0f;
+  --bg3: #161616;
+  --gold: #D4A843;
+  --white: #F0EDE8;
+  --muted: #6B6560;
+  --border2: rgba(240,237,232,0.07);
+  --border-gold: rgba(212,168,67,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Familjen Grotesk',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 6vw;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease}
+nav.scrolled{padding:16px 6vw;background:rgba(8,8,8,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;color:var(--white);text-decoration:none}
+.logo span{color:var(--gold)}
+.nav-cta{font-family:'Familjen Grotesk',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:11px 24px;border-radius:2px;text-decoration:none;transition:all .2s ease}
+.nav-cta:hover{background:var(--white);transform:translateY(-2px)}
+#hero{min-height:100vh;padding:160px 6vw 100px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,22vw,320px);letter-spacing:.05em;color:transparent;-webkit-text-stroke:1px rgba(212,168,67,.04);white-space:nowrap;pointer-events:none;user-select:none}
+.hero-content{position:relative;max-width:1100px;margin:0 auto;width:100%}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(68px,12vw,158px);line-height:.92;letter-spacing:.01em;color:var(--white);margin-bottom:52px}
+.hero-title .accent{color:var(--gold)}
+.hero-bottom{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;padding-top:48px;border-top:1px solid var(--border2)}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.8;max-width:380px}
+.hero-actions{display:flex;flex-direction:column;align-items:flex-end;gap:16px}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--bg);font-family:'Familjen Grotesk',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:16px 32px;border-radius:2px;text-decoration:none;transition:all .25s ease;position:relative;overflow:hidden}
+.btn-primary:hover{background:var(--white);transform:translateY(-3px);box-shadow:0 20px 40px rgba(212,168,67,.18)}
+.btn-primary svg{transition:transform .2s ease}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-ghost{font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s ease}
+.btn-ghost:hover{color:var(--white)}
+#video-section{padding:0 6vw 120px}
+.video-wrap{max-width:1100px;margin:0 auto;border-radius:8px;overflow:hidden;background:var(--bg3);border:1px solid var(--border2);aspect-ratio:16/9;position:relative;cursor:pointer}
+.video-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:linear-gradient(135deg,var(--bg2),var(--bg3))}
+.video-tag{position:absolute;top:24px;left:24px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.2);padding:6px 14px;border-radius:2px}
+.play-btn{width:72px;height:72px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:all .3s ease;z-index:2}
+.play-btn:hover{transform:scale(1.15);background:var(--white);box-shadow:0 0 60px rgba(212,168,67,.35)}
+.video-overlay-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,5vw,60px);letter-spacing:.05em;color:var(--white);text-align:center;line-height:1}
+.video-overlay-title span{color:var(--gold)}
+.divider{height:1px;background:var(--border2);margin:0 6vw}
+.sw{padding:120px 6vw}
+.si{max-width:1100px;margin:0 auto}
+.stitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7vw,92px);line-height:.95;letter-spacing:.01em;color:var(--white);margin-bottom:24px}
+.ssub{font-size:1rem;color:var(--muted);line-height:1.8;max-width:500px}
+#problema{background:var(--bg2)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:4px;overflow:hidden;margin-top:72px}
+.pcard{background:var(--bg2);padding:48px 36px;transition:background .3s ease}
+.pcard:hover{background:var(--bg3)}
+.pnum{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(212,168,67,.1);line-height:1;margin-bottom:20px}
+.pcard h3{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:12px;line-height:1.3}
+.pcard p{font-size:.86rem;color:var(--muted);line-height:1.75}
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;margin-top:80px}
+.sol-items{display:flex;flex-direction:column}
+.sol-item{display:flex;gap:24px;padding:28px 0;border-bottom:1px solid var(--border2);transition:all .2s ease}
+.sol-item:first-child{border-top:1px solid var(--border2)}
+.sol-item:hover .sol-ic{transform:translateX(6px)}
+.sol-n{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--gold);letter-spacing:.08em;min-width:32px;padding-top:2px}
+.sol-ic{transition:transform .2s ease}
+.sol-ic h4{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.sol-ic p{font-size:.83rem;color:var(--muted);line-height:1.6}
+.sol-card{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:40px;position:sticky;top:120px}
+.sol-card-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border2)}
+.mrow{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border2)}
+.mrow:last-child{border-bottom:none}
+.mlabel{font-size:.83rem;color:var(--muted)}
+.mval{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);letter-spacing:.04em}
+#planes{background:var(--bg2)}
+.planes-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:4px;overflow:hidden;margin-top:72px}
+.plan{background:var(--bg2);padding:48px 36px;display:flex;flex-direction:column;transition:background .3s ease;position:relative}
+.plan.feat{background:var(--bg3)}
+.plan:hover{background:var(--bg3)}
+.pop-badge{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:4px 12px;border-radius:2px;display:inline-block;margin-bottom:20px}
+.plan-n{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.plan-p{font-family:'Bebas Neue',sans-serif;font-size:3.8rem;color:var(--white);line-height:1;letter-spacing:.02em;margin-bottom:4px}
+.plan-p sup{font-size:1.4rem;vertical-align:super}
+.plan-per{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.plan-s{font-size:.75rem;color:rgba(212,168,67,.45);margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid var(--border2)}
+.plan-f{list-style:none;display:flex;flex-direction:column;gap:11px;flex:1;margin-bottom:32px}
+.plan-f li{display:flex;gap:10px;font-size:.83rem;color:var(--muted);line-height:1.4}
+.plan-f li::before{content:'→';color:var(--gold);font-size:.72rem;flex-shrink:0;margin-top:2px}
+.plan-btn{display:block;text-align:center;padding:13px;font-family:'Familjen Grotesk',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .2s ease;border:1px solid var(--border2);color:var(--white)}
+.plan.feat .plan-btn{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.plan-btn:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.sobre-g{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;margin-top:80px}
+.sobre-t p{font-size:1.02rem;color:var(--muted);line-height:1.85;margin-bottom:20px}
+.vals{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:4px;overflow:hidden}
+.val{background:var(--bg);padding:28px;transition:background .2s ease}
+.val:hover{background:var(--bg3)}
+.val-icon{font-size:1.3rem;margin-bottom:10px}
+.val h4{font-size:.83rem;font-weight:700;color:var(--white);margin-bottom:5px}
+.val p{font-size:.76rem;color:var(--muted);line-height:1.55}
+#leadmagnet{background:var(--bg2)}
+.lm-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:72px}
+.lm-list{display:flex;flex-direction:column;margin-top:32px}
+.lm-item{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border2);font-size:.88rem;color:var(--muted)}
+.lm-item:first-child{border-top:1px solid var(--border2)}
+.lm-item::before{content:'✓';color:var(--gold);font-size:.72rem;font-weight:700}
+.lm-form{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:40px}
+.lm-flabel{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px}
+.lm-ftitle{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:.02em;color:var(--white);line-height:1.1;margin-bottom:8px}
+.lm-fsub{font-size:.8rem;color:var(--muted);margin-bottom:24px}
+.lm-form iframe{width:100%!important;max-width:100%!important;border-radius:4px}
+#cta{padding:160px 6vw;text-align:center;position:relative;overflow:hidden}
+#cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(212,168,67,.04) 0%,transparent 70%);pointer-events:none}
+.cta-i{position:relative}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,10vw,128px);line-height:.95;letter-spacing:.01em;color:var(--white);margin-bottom:28px}
+.cta-title .accent{color:var(--gold)}
+.cta-sub{font-size:1rem;color:var(--muted);max-width:440px;margin:0 auto 48px;line-height:1.75}
+.cta-contact{margin-top:24px;font-size:.76rem;color:var(--muted);letter-spacing:.06em}
+.cta-contact a{color:var(--muted);text-decoration:none;transition:color .2s ease}
+.cta-contact a:hover{color:var(--gold)}
+footer{padding:28px 6vw;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between}
+.fcopy{font-size:.76rem;color:var(--muted);letter-spacing:.06em}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+@media(max-width:900px){
+  nav{padding:18px 5vw}
+  nav.scrolled{padding:14px 5vw}
+  .sw{padding:80px 5vw}
+  #hero{padding:110px 5vw 70px}
+  .hero-bottom{grid-template-columns:1fr;gap:28px}
+  .hero-actions{align-items:flex-start}
+  #video-section{padding:0 5vw 80px}
+  .pgrid,.planes-g{grid-template-columns:1fr}
+  .sol-grid,.sobre-g,.lm-g{grid-template-columns:1fr;gap:48px}
+  .sol-card{position:static}
+  .vals{grid-template-columns:1fr 1fr}
+  .cta-title{font-size:clamp(44px,12vw,100px)}
+  footer{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:480px){
+  .vals{grid-template-columns:1fr}
+  .lm-form{padding:24px 16px}
+  .plan{padding:32px 20px}
+  .btn-primary{width:100%;justify-content:center}
+  .hero-title{font-size:clamp(44px,16vw,72px)}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo">Garda<span>Growth</span></a>
+  <a href="https://wa.me/34670100504" class="nav-cta" target="_blank">Habla con nosotros</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg">GARDA</div>
+  <div class="hero-content">
+    <div class="eyebrow reveal">Agencia de marketing digital</div>
+    <h1 class="hero-title reveal d1">
+      Más clientes.<br>
+      <span class="accent">Sin</span><br>
+      complicaciones.
+    </h1>
+    <div class="hero-bottom reveal d2">
+      <p class="hero-sub">Creamos tu presencia digital, gestionamos tus redes y optimizamos tu visibilidad para que más clientes te encuentren. Tú te dedicas a tu negocio. Nosotros al resto.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/34670100504" class="btn-primary" target="_blank">
+          Diagnóstico gratuito
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#planes" class="btn-ghost">Ver planes ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video-section">
+  <div class="video-wrap reveal">
+    <div class="video-tag">Sobre nosotros</div>
+    <div class="video-inner">
+      <button class="play-btn" onclick="this.closest('.video-wrap').innerHTML='<iframe width=\'100%\' height=\'100%\' src=\'https://www.youtube.com/embed/3rmJc9chrxY?autoplay=1\' frameborder=\'0\' allowfullscreen style=\'position:absolute;inset:0;width:100%;height:100%\'></iframe>'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#080808"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="video-overlay-title">GARDA<br><span>GROWTH</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="problema" class="sw">
+  <div class="si">
+    <div class="eyebrow reveal">El problema</div>
+    <h2 class="stitle reveal d1">¿Por qué tu negocio<br>no crece online?</h2>
+    <div class="pgrid">
+      <div class="pcard reveal">
+        <div class="pnum">01</div>
+        <h3>Sin visibilidad online</h3>
+        <p>Cada día hay personas buscando negocios como el tuyo. Si no apareces bien posicionado en Google, van a la competencia. Sin excepción.</p>
+      </div>
+      <div class="pcard reveal d1">
+        <div class="pnum">02</div>
+        <h3>Reseñas sin gestionar</h3>
+        <p>Una reseña negativa sin respuesta vale más que diez positivas en tu contra. La mayoría de propietarios lo ignoran sin saberlo.</p>
+      </div>
+      <div class="pcard reveal d2">
+        <div class="pnum">03</div>
+        <h3>Redes sin estrategia</h3>
+        <p>Tener redes sociales no es suficiente. Sin una estrategia clara de contenido no conviertes seguidores en clientes reales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="solucion" class="sw">
+  <div class="si">
+    <div class="eyebrow reveal">La solución</div>
+    <h2 class="stitle reveal d1">Nos encargamos<br>de todo</h2>
+    <div class="sol-grid">
+      <div class="sol-items reveal d2">
+        <div class="sol-item"><span class="sol-n">01</span><div class="sol-ic"><h4>Analizamos tu negocio</h4><p>Diagnóstico completo de tu presencia digital actual</p></div></div>
+        <div class="sol-item"><span class="sol-n">02</span><div class="sol-ic"><h4>Optimizamos tus perfiles</h4><p>Google Maps, web e Instagram al máximo nivel</p></div></div>
+        <div class="sol-item"><span class="sol-n">03</span><div class="sol-ic"><h4>Creamos contenido</h4><p>Vídeos y publicaciones que atraen clientes reales</p></div></div>
+        <div class="sol-item"><span class="sol-n">04</span><div class="sol-ic"><h4>Activamos las reseñas</h4><p>Sistema para conseguir más reseñas positivas</p></div></div>
+        <div class="sol-item"><span class="sol-n">05</span><div class="sol-ic"><h4>Mejora continua</h4><p>Seguimiento mensual y ajuste de estrategia</p></div></div>
+      </div>
+      <div class="reveal d3">
+        <div class="sol-card">
+          <div class="sol-card-label">Impacto medio en clientes</div>
+          <div class="mrow"><span class="mlabel">Visitas Google Maps</span><span class="mval">+64%</span></div>
+          <div class="mrow"><span class="mlabel">Reseñas nuevas</span><span class="mval">×3</span></div>
+          <div class="mrow"><span class="mlabel">Clics al negocio</span><span class="mval">+89%</span></div>
+          <div class="mrow"><span class="mlabel">Implementación</span><span class="mval">7 días</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="planes" class="sw">
+  <div class="si">
+    <div class="eyebrow reveal">Planes</div>
+    <h2 class="stitle reveal d1">Elige tu plan</h2>
+    <p class="ssub reveal d2">Todos incluyen seguimiento mensual y acceso directo a nuestro equipo. Sin permanencia.</p>
+    <div class="planes-g">
+      <div class="plan reveal">
+        <div class="plan-n">Visibilidad</div>
+        <div class="plan-p"><sup>€</sup>350</div>
+        <div class="plan-per">al mes</div>
+        <div class="plan-s">Setup: 150€ · pago único</div>
+        <ul class="plan-f">
+          <li>Google Maps optimizado</li>
+          <li>2 vídeos semanales (Instagram)</li>
+          <li>Publicaciones en Google</li>
+          <li>Sistema para conseguir reseñas</li>
+          <li>Medición básica de resultados</li>
+        </ul>
+        <a href="https://wa.me/34670100504" class="plan-btn" target="_blank">Empezar</a>
+      </div>
+      <div class="plan feat reveal d1">
+        <div class="pop-badge">Más popular</div>
+        <div class="plan-n">Crecimiento</div>
+        <div class="plan-p"><sup>€</sup>450</div>
+        <div class="plan-per">al mes</div>
+        <div class="plan-s">Setup: 350€ · pago único</div>
+        <ul class="plan-f">
+          <li>Todo lo del plan Visibilidad</li>
+          <li>Instagram optimizado al completo</li>
+          <li>3 vídeos semanales</li>
+          <li>Estrategia de contenido</li>
+          <li>Gestión de reseñas y reputación</li>
+          <li>Seguimiento mensual de métricas</li>
+        </ul>
+        <a href="https://wa.me/34670100504" class="plan-btn" target="_blank">Empezar</a>
+      </div>
+      <div class="plan reveal d2">
+        <div class="plan-n">Autoridad</div>
+        <div class="plan-p"><sup>€</sup>500</div>
+        <div class="plan-per">al mes</div>
+        <div class="plan-s">Setup: 400€ · pago único</div>
+        <ul class="plan-f">
+          <li>Todo lo del plan Crecimiento</li>
+          <li>Web optimizada a reservas</li>
+          <li>Sistema de reservas / WhatsApp</li>
+          <li>6 vídeos semanales</li>
+          <li>Gestión de anuncios digitales</li>
+          <li>Estrategia avanzada de captación</li>
+        </ul>
+        <a href="https://wa.me/34670100504" class="plan-btn" target="_blank">Empezar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="nosotros" class="sw">
+  <div class="si">
+    <div class="eyebrow reveal">Quiénes somos</div>
+    <h2 class="stitle reveal d1">Crecimiento digital<br>para negocios</h2>
+    <div class="sobre-g">
+      <div class="sobre-t reveal d2">
+        <p>Somos Garda Growth, una agencia de marketing digital que ayuda a negocios a crecer online. Mejoramos tu presencia digital para atraer más clientes sin que tengas que dedicarle tiempo.</p>
+        <p>Nuestro enfoque es simple: resultados reales, comunicación directa y trabajo constante. Sin palabrería, sin esperas, sin excusas.</p>
+        <a href="https://wa.me/34670100504" class="btn-primary" target="_blank" style="margin-top:32px;display:inline-flex">
+          Empezar esta semana
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="vals reveal d3">
+        <div class="val"><div class="val-icon">🎯</div><h4>Resultados reales</h4><p>Medimos y mostramos el impacto cada mes.</p></div>
+        <div class="val"><div class="val-icon">⚡</div><h4>Respuesta rápida</h4><p>Comunicación directa sin intermediarios.</p></div>
+        <div class="val"><div class="val-icon">🍽️</div><h4>Nicho definido</h4><p>Nos especializamos en sectores concretos para darte resultados reales.</p></div>
+        <div class="val"><div class="val-icon">🔄</div><h4>Mejora continua</h4><p>Revisión mensual para que siempre crezcas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="leadmagnet" class="sw">
+  <div class="si">
+    <div class="lm-g">
+      <div class="reveal">
+        <div class="eyebrow">Guía gratuita</div>
+        <h2 class="stitle">Descubre qué<br>está fallando</h2>
+        <div class="lm-list">
+          <div class="lm-item">Por qué no apareces en las búsquedas</div>
+          <div class="lm-item">Cómo gestionar reseñas negativas</div>
+          <div class="lm-item">Sistema para conseguir más reseñas</div>
+          <div class="lm-item">Qué fotos necesitas y cuándo actualizarlas</div>
+          <div class="lm-item">Solución concreta para cada error</div>
+        </div>
+      </div>
+      <div class="lm-form reveal d2">
+        <span class="lm-flabel">Descarga gratuita</span>
+        <div class="lm-ftitle">Los 5 errores de Google Maps</div>
+        <div class="lm-fsub">Te lo mandamos al email en menos de 1 minuto.</div>
+        <div style="overflow:hidden;height:120px;position:relative;border-radius:4px;">
+          <iframe width="540" src="https://297941e6.sibforms.com/serve/MUIFAI3Es7-PkvyJwLwoedjSgD7MeA_4ayYVcsBjORMM6PPsLdGean7ugFAcO1INtpvVxBddOgldHq1TGb5UNMN9gL043N9ZNfRLu1nuozR20e07qMkVC_pnQGMwOY9Qyc6AeNNowQe-jXMSwjEmEHioWKtWtS-ioG4qac_gbTIHxbztZl65E2lhp0oH7b40nwSIX2k5RPs1_nxAjg==" frameborder="0" scrolling="no" allowfullscreen style="display:block;width:100%;max-width:100%;height:600px;margin-top:-290px;border:none;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="cta">
+  <div class="cta-i">
+    <div class="eyebrow reveal" style="justify-content:center">Empieza hoy</div>
+    <h2 class="cta-title reveal d1">¿Listo para<br><span class="accent">empezar?</span></h2>
+    <p class="cta-sub reveal d2">Cuéntanos en qué podemos ayudarte y te preparamos un diagnóstico gratuito. Sin compromiso.</p>
+    <div class="reveal d3">
+      <a href="https://wa.me/34670100504" class="btn-primary" target="_blank" style="font-size:.92rem;padding:18px 40px;display:inline-flex">
+        Escríbenos por WhatsApp
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="cta-contact">
+        <a href="mailto:gardagrowth@gmail.com">gardagrowth@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="tel:+34670100504">670 10 05 04</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo" style="font-size:1.1rem">Garda<span>Growth</span></a>
+  <div class="fcopy">© 2025 Garda Growth · Especialistas en marketing digital</div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+setTimeout(() => document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible')), 80);
+</script>
+</body>
+</html>
